@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plant CO2 Uptake Prediction</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Plant CO2 Uptake Prediction">
+  <meta name="author" content="Lam Chan Kuen">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Plant CO2 Uptake Prediction</h1>
+    <h2>Coursera Develop Data Product Project</h2>
+    <p>Lam Chan Kuen<br/>Coursera Data Science Student</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Executive Summary</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The study was based on data from an experiment on the cold tolerance of the
+grass species Echinochloa crusgalli. The CO2 uptake of six plants from Quebec and six plants from Mississippi was measured at several levels of ambient CO2 concentration. Half the plants of each type were chilled overnight before the experiment was conducted.</p>
+
+<p>A model was developed to investigate the relationship of CO2 uptake under various predictors: Plant Type, Treatment and CO2 Concentration. </p>
+
+<p>Models were built on glm (generalized linear model) for 4 different combination of plant type and treatment. An interactive Shiny app was developed to predict CO2 uptake based on selection of predictors combination. </p>
+
+<p>As a conslusion, the model shows carbon dioxide uptake rates (umol/m<sup>2</sup> sec) of different plant raises sharply at low concentration level. Co2 uptake rate slows down with ambient carbon dioxide concentrations reach between 200 to 300 mL/L.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Prediction Model Development</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Data Loading and Cleansing</h3>
+
+<p>The CO2 data frame has 84 rows and 5 columns of data: Plant, Type, Treatment, conc and uptake. CO2 data frame was loaded and a new predictor (TT) was built by combining the plant type and treatment.  </p>
+
+<h3>Model Fitting</h3>
+
+<p>Prediction model is built on CO2 dataset and the fitted glm regression model.
+Prediction is based on 2 inputs &#39;TT&#39; and &#39;CO2 Concentration&#39;. </p>
+
+<h3>Interacive Prediction Appication</h3>
+
+<p>A Shiny application was built to predicts CO2 uptake by plant type+treatment and CO2 concentration. User can select from one of four combinations of plant type and treatment along with the CO2 Concentration Level. </p>
+
+<p>The Shiny application can be found on URL: <a href="https://lamchankuen.shinyapps.io/DevDataProd/">https://lamchankuen.shinyapps.io/DevDataProd/</a> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Usage</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>To run prediction of CO2 uptake: </p>
+
+<ul>
+<li>1. Select from 1 of the 4 Plant Type and Treatment combination: </li>
+<li>1.1 Quebec Chilled / 1.2 Quebec Non Chilled / 1.3 Mississippi Chilled / 1.4 Mississippi Non Chilled</li>
+<li>2. Set CO2 concentration level (mL/L):</li>
+<li>A slider is created for input of CO2 concentration level between 0 to 1000 mL/L with step of 50mL/L. The default is set at 500mL/L. </li>
+</ul>
+
+<p>Output:</p>
+
+<ul>
+<li>1. Prediction of CO2 Uptake Rate is calculated on the fly.</li>
+<li>2. A scatterplot of fitted lines with the prediction level (in red). </li>
+<li>3. The prediction of CO2 uptake can also be found at intercept of the prediction level (red) and the fitted line (blue). </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Example and Conclusion</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Below is a scatterplot of models based on the default CO2 Concentration value of 500 for Quebec.chilled. The predicted value is 33.2961444. </p>
+
+<p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+<h3>Conclusion</h3>
+
+<p>The Scatterplot  shows there is significant difference of CO2 uptake under between plant type and treatment. The Shiny application provides a great interactive way for users to predict CO2 Uptake rate based on the two predictors defined. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Executive Summary'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Prediction Model Development'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Usage'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example and Conclusion'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
